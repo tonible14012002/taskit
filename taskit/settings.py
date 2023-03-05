@@ -29,9 +29,16 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'account.MyUser'
 
+# Serve server static file
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'account/static/'
+]
+
+# Serve upload files by end users
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Application definition
-
 INSTALLED_APPS = [
     # my app
     'account',

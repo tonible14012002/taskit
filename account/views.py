@@ -10,4 +10,3 @@ MyUser = get_user_model()
 class MyUserViewSet(ViewSet, ListAPIView):
     queryset = MyUser.objects.all()
     serializer_class = MyUserSerializer
-

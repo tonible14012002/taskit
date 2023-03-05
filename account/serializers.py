@@ -6,5 +6,7 @@ MyUser = get_user_model()
 class MyUserSerializer(ModelSerializer):
     class Meta:
         model = MyUser
-        fields = ['id', 'username', 'first_name', 'last_name', 
-                  'birth', 'date_joined', 'email']
+        # fields = ['id', 'username', 'first_name', 'last_name', 
+        #           'birth', 'date_joined', 'email']
+        exclude = ['password', 'is_superuser', 'is_staff', 
+                   'is_active', 'groups', 'user_permissions']
