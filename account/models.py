@@ -22,4 +22,4 @@ class MyUser(AbstractUser):
                               validators=(PHONE_REGEX,),
                               max_length=15)
    avatar = models.ImageField(upload_to=get_avatar_path, 
-                              default='images/default_avatar.jpg')
+                              default='/static/images/default_avatar.jpg')

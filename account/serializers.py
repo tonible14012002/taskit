@@ -10,3 +10,8 @@ class MyUserSerializer(ModelSerializer):
         #           'birth', 'date_joined', 'email']
         exclude = ['password', 'is_superuser', 'is_staff', 
                    'is_active', 'groups', 'user_permissions']
+    
+    def update(self, instance, validated_data):
+        # Not allow update username
+        validated_data.pop('username', None)
+        return super().update(instance, validated_data)

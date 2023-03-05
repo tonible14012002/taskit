@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'account.MyUser'
 
 # Serve server static file
+STATIC_ROOT = 'static'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'account/static/'
