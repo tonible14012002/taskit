@@ -43,7 +43,7 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 INSTALLED_APPS = [
     # my app
     'account',
-
+    'task',
     # built-in
     'django.contrib.admin',
     'django.contrib.auth',
