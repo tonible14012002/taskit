@@ -15,3 +15,8 @@ class MyUserSerializer(ModelSerializer):
         # Not allow update username
         validated_data.pop('username', None)
         return super().update(instance, validated_data)
+    
+class MyUserDetailSerializer(ModelSerializer):
+    class Meta:
+        model =  MyUser
+        fields = '__all__'

@@ -1,11 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager, UserManager
 from django.core.validators import RegexValidator
 # Create your models here.
 
 # Generate image  path for avatar
 def get_avatar_path(instance, filename):
    return f'images/account/{instance.username}/avatar/{filename}'
+
+
+class MyActiveUserManager(BaseUserManager):
+   def get_queryset(self):
+      return super().get_queryset().filter(is_active=True)
 
 class MyUser(AbstractUser):
    PHONE_REGEX = RegexValidator(
@@ -23,3 +28,5 @@ class MyUser(AbstractUser):
                               max_length=15)
    avatar = models.ImageField(upload_to=get_avatar_path, 
                               default='/static/images/default_avatar.jpg')
+   objects = UserManager()
+   active = MyActiveUserManager()

@@ -8,11 +8,18 @@ from  rest_framework.generics import (
     RetrieveAPIView
 )
 
-from .serializers import MyUserSerializer
+from .serializers import (
+    MyUserDetailSerializer,
+    MyUserSerializer
+)
 
 MyUser = get_user_model()
 # Create your views here.
-class MyUserViewSet(ViewSet, ListAPIView, CreateAPIView, 
+class MyUserViewSet(ViewSet, CreateAPIView, 
                     UpdateAPIView, RetrieveAPIView):
-    queryset = MyUser.objects.all()
-    serializer_class = MyUserSerializer
+    queryset = MyUser.active.all()
+    
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return MyUserSerializer
+        return MyUserDetailSerializer
